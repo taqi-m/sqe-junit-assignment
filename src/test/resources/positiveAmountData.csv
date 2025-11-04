@@ -1,0 +1,5 @@
+Amount,isPositive
+1,TRUE
+0.01,TRUE
+0,FALSE
+-50,FALSE

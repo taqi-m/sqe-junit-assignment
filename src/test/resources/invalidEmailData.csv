@@ -1,0 +1,7 @@
+Email, Description
+testexample.com, Missing @
+test@example, Missing TLD
+test@.com, Missing domain
+@example.com, Missing local part
+, Empty
+test @example.com, Contains Space
