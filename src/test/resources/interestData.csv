@@ -1,0 +1,4 @@
+Principal (P),Rate (R),TimeInYears (T),"Simple Interest = =IF(OR(A2<=0, B2<0, C2<0), ""Error: Invalid Input"", ROUND(A2 * (B2/100) * C2, 2)) |Formula: I = P * R * T"
+1000,5,2,100
+500,10,1,50
+1250.5,3.5,10,437.68
