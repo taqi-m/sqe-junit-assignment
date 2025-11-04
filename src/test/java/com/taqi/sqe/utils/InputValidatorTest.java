@@ -2,7 +2,7 @@ package com.taqi.sqe.utils;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
@@ -69,4 +69,27 @@ class InputValidatorTest {
     void testEmail_ValidCases(String email) {
         assertTrue(validator.isValidEmail(email));
     }
+    
+ // This single method runs 6 test cases
+    @Order(7)
+    @ParameterizedTest(name = "Test {index}: Invalid Email = {0}")
+    @CsvFileSource(resources = "/invalidEmailData.csv", numLinesToSkip = 1)
+    @Tag("integration") // Tagged as 'integration' because it reads an external file
+    @DisplayName("Test 10-15: Invalid Email Formats")
+    void testEmail_InvalidCases(String email) {
+        assertFalse(validator.isValidEmail(email));
+    }
+    
+    // This method demonstrates mapping inputs to expected outputs
+    // It runs 4 test cases
+    // Total tests for this class = 15 standard + 4 data-driven = 19
+    @Order(8)
+    @ParameterizedTest(name = "Test {index}: Amount {0} -> Expected {1}")
+    @CsvFileSource(resources = "/positiveAmountData.csv", numLinesToSkip = 1)
+    @Tag("integration") // Tagged as 'integration' because it reads an external file
+    @DisplayName("Test 16-19: Positive Amount Data-Driven")
+    void testIsPositive_DataDriven(double amount, boolean expected) {
+		assertEquals(expected, validator.isPositiveAmount(amount));
+	}
+    
 }
