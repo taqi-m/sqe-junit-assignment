@@ -3,6 +3,8 @@ package com.taqi.sqe.utils;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.time.LocalTime;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -121,7 +123,17 @@ class LoanCalculatorTest {
         assertEquals(expectedPayment, actualPayment);
     }
     
-    
+    @Test
+    void checkParallelExecution() throws InterruptedException {
+        System.out.println("=== PARALLEL CHECK ===");
+        System.out.println("Start - Thread: " + Thread.currentThread().getName());
+        System.out.println("Time: " + LocalTime.now());
+        Thread.sleep(10); // Wait 1 second
+        System.out.println("End - Thread: " + Thread.currentThread().getName());
+        System.out.println("Time: " + LocalTime.now());
+        System.out.println("=== PARALLEL CHECK END ===");
+    }
     
     
 }
+
